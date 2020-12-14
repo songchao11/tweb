@@ -9,5 +9,5 @@ docker:
 
 .PHONY: push
 push:
-	docker tag ${IMAGE_NAME}:${VERSION} swr.cn-east-3.myhuaweicloud.com/wsxcc/${IMAGE_NAME}:${VERSION}
-	docker push swr.cn-east-3.myhuaweicloud.com/wsxcc/${IMAGE_NAME}:${VERSION}
+	docker tag ${IMAGE_NAME}:${VERSION} swr.cn-north-4.myhuaweicloud.com/wsxcc/${IMAGE_NAME}:${VERSION}
+	docker push swr.cn-north-4.myhuaweicloud.com/wsxcc/${IMAGE_NAME}:${VERSION}
