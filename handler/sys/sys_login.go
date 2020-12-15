@@ -4,12 +4,13 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/labstack/gommon/log"
 	"net/http"
-	"tweb/handler/global"
+	"tweb/global"
+	"tweb/handler/auth"
 )
 
-func LoginHandler(c *gin.Context){
+func LoginHandler(c *gin.Context) {
 	type loginParam struct {
-		Account string `json:"account"`
+		Username string `json:"username"`
 		Password string `json:"password"`
 	}
 
@@ -25,8 +26,11 @@ func LoginHandler(c *gin.Context){
 		return
 	}
 
-	resp.Data = param.Account
-	resp.Code = global.ErrCodeSuccess
-	resp.Msg = "success"
-	return
+	// 转由jwt中间件处理登录流程
+	login := &auth.Login{}
+	login.Username = param.Username
+	login.Password = param.Password
+
+	c.Set(auth.LoginKey, login)
+	auth.JwtWrapper.LoginHandler(c)
 }

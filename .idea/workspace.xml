@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fdd96400-0889-4960-a793-ab0859c65b79" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handler/auth/common.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handler/auth/jwt.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handler/test/test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/global/errorcode.go" beforeDir="false" afterPath="$PROJECT_DIR$/global/errorcode.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/global/response.go" beforeDir="false" afterPath="$PROJECT_DIR$/global/response.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/init.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/init.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/sys/sys_login.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/sys/sys_login.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,9 +34,12 @@
     <option name="indexEntireGoPath" value="false" />
   </component>
   <component name="ProjectId" id="1laYaTORZQuyFfaiaYU7euIkXJN" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="GO_FMT" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
@@ -37,6 +47,11 @@
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\projects\go\tweb" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -70,11 +85,17 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="edit dockerfile" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit dockerfile" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
