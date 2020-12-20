@@ -10,7 +10,8 @@ import (
 
 func Init() error {
 	//todo 改成配置
-	dsn := "root:123456@tcp(127.0.0.1:3306)/tweb?charset=utf8&parseTime=True&loc=Local"
+	//dsn := "root:123456@tcp(127.0.0.1:3306)/tweb?charset=utf8&parseTime=True&loc=Local"
+	dsn := "root:123456@tcp(mysql:3306)/tweb?charset=utf8&parseTime=True&loc=Local"
 	var err error
 	global.TDB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
