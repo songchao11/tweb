@@ -10,25 +10,25 @@ import (
 
 func LoginHandler(c *gin.Context) {
 	type loginParam struct {
-		Username string `json:"username"`
+		Account  string `json:"account"`
 		Password string `json:"password"`
 	}
 
 	param := &loginParam{}
-	resp := &global.Response{}
-	defer c.JSON(http.StatusOK, resp)
 
 	err := c.ShouldBindJSON(param)
 	if err != nil {
 		log.Error("illegal body:", err)
+		resp := &global.Response{}
 		resp.Code = global.ErrCodeParamInvalid
 		resp.Msg = "invalid body"
+		c.JSON(http.StatusOK, resp)
 		return
 	}
 
 	// 转由jwt中间件处理登录流程
 	login := &auth.Login{}
-	login.Username = param.Username
+	login.Account = param.Account
 	login.Password = param.Password
 
 	c.Set(auth.LoginKey, login)

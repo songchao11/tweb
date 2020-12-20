@@ -10,6 +10,8 @@ import (
 	"strings"
 	"time"
 	"tweb/global"
+	"tweb/model/sys"
+	"tweb/utils"
 )
 
 var (
@@ -49,15 +51,20 @@ func Init() {
 				return nil, fmt.Errorf("登录数据类型错误")
 			}
 
-			//todo 需改动
-			if login.Username != "root" || login.Password != "123456" {
-				return nil, fmt.Errorf("用户或密码错误")
+			//校验账号密码
+			sysUser, err := sys.SysUser{}.GetSysUserByAccount(login.Account)
+			if err != nil {
+				return nil, err
 			}
-			login.UserId = 1
-
+			if !utils.VerifySaltedPassword(login.Password, sysUser.Password, sysUser.Salt) {
+				return nil, fmt.Errorf("账号密码错误")
+			}
+			login.UserId = int64(sysUser.ID)
+			login.RealName = sysUser.RealName
 			token := &Token{
 				UserId:   login.UserId,
-				Username: login.Username,
+				Account:  login.Account,
+				RealName: login.RealName,
 			}
 			return token, nil
 		},
@@ -80,8 +87,8 @@ func Init() {
 		PayloadFunc: func(data interface{}) jwt.MapClaims {
 			if v, ok := data.(*Token); ok {
 				return jwt.MapClaims{
-					"user_id":   fmt.Sprintf("%d", v.UserId),
-					"user_name": v.Username,
+					"user_id": fmt.Sprintf("%d", v.UserId),
+					"account": v.Account,
 				}
 			}
 			return jwt.MapClaims{}
@@ -91,7 +98,7 @@ func Init() {
 		IdentityHandler: func(c *gin.Context) interface{} {
 			claims := jwt.ExtractClaims(c)
 			token := &Token{
-				Username: claims["user_name"].(string),
+				Account: claims["account"].(string),
 			}
 			token.UserId, _ = strconv.ParseInt(claims["user_id"].(string), 0, 64)
 			return token
@@ -106,12 +113,6 @@ func Init() {
 		Unauthorized: func(c *gin.Context, code int, message string) {
 			ec := global.ErrCodePriviledge
 			if strings.Contains(message, "expired") {
-				//claims, err := JwtWrapper.GetClaimsFromJWT(c)
-				//if err != nil {
-				//	expiredAt := int64(claims["exp"].(float64))
-				//	userName := claims["user_name"].(string)
-				//	log.Infof("===== session expired,expire at %d ,userName %s ====", expiredAt, userName)
-				//}
 				ec = global.ErrCodeSessionGone
 			}
 			c.JSON(http.StatusOK, global.Response{
@@ -152,7 +153,7 @@ func JwtRefresher() gin.HandlerFunc {
 		expireDate := time.Unix(expireAt, 0)
 
 		if expireAt-now < 3600 {
-			log.Infof("会话即将超期：用户<%s> 過期時間<%s> 剩余时间<%s>", token.Username, expireDate, res)
+			log.Infof("会话即将超期：用户<%s> 過期時間<%s> 剩余时间<%s>", token.Account, expireDate, res)
 
 			// 会话即将失效，尝试刷新
 			// 注意：如果会话已经持续保活超过JwtWrapper.MaxRefresh指定时间，则必须重新登录
@@ -172,7 +173,7 @@ func JwtRefresher() gin.HandlerFunc {
 				return
 			}
 
-			log.Infof("会话刷新：用户<%s> 超期时间<%s> 剩余时间<%s>", token.Username, future, future.Sub(time.Now()))
+			log.Infof("会话刷新：用户<%s> 超期时间<%s> 剩余时间<%s>", token.Account, future, future.Sub(time.Now()))
 
 			// 通过头部返回更新后的token
 			c.Header("Authorization", JwtWrapper.TokenHeadName+" "+newToken)

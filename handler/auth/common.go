@@ -4,15 +4,17 @@ import "github.com/gin-gonic/gin"
 
 type Token struct {
 	UserId   int64
-	Username string
+	Account  string
+	RealName string
 }
 
 type Login struct {
 	Token       string `json:"token"`
 	TokenExpire string `json:"tokenExpire"`
 	UserId      int64  `json:"userId"`
-	Username    string `json:"username"`
+	Account     string `json:"account"`
 	Password    string `json:"-"`
+	RealName    string `json:"realName"`
 }
 
 func MustGetToken(c *gin.Context) *Token {

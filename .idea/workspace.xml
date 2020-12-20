@@ -2,16 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fdd96400-0889-4960-a793-ab0859c65b79" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/handler/auth/common.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handler/auth/jwt.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handler/test/test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/global/vars.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handler/sys/sys_logout.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/init.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/sys/sys_user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/utils.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/salted.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/errorcode.go" beforeDir="false" afterPath="$PROJECT_DIR$/global/errors.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/global/errorcode.go" beforeDir="false" afterPath="$PROJECT_DIR$/global/errorcode.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/global/response.go" beforeDir="false" afterPath="$PROJECT_DIR$/global/response.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/init.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/init.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/auth/common.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/auth/common.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/auth/jwt.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/auth/jwt.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handler/sys/sys_login.go" beforeDir="false" afterPath="$PROJECT_DIR$/handler/sys/sys_login.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,6 +54,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\projects\go\tweb\global" />
       <recent name="E:\projects\go\tweb" />
     </key>
   </component>
@@ -95,7 +100,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="edit dockerfile" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit dockerfile" />
+    <MESSAGE value="add token" />
+    <option name="LAST_COMMIT_MESSAGE" value="add token" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
